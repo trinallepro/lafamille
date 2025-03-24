@@ -1,1 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavadana Hotel & Holidays - Unplugged Vacations</title>
+    <style>
+        :root {
+            --primary: #0b5567;
+            --secondary: #84b9c7;
+            --accent: #c91d35;
+            --light: #f5f5f5;
+            --dark: #333;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #083a47 100%);
+            color: white;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 60px;
+            margin-right: 15px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        .flag {
+            width: 60px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 600px;
+            padding: 100px;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #a6182c;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Offer Section */
+        .offers {
+            padding: 80px 0;
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        .offer-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .offer-card {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .offer-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .offer-content {
+            padding: 20px;
+        }
+
+        .offer-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin: 15px 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        /* Facilities Section */
+        .facilities {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .facility-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .facility-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .facility-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .facility-content {
+            padding: 20px;
+        }
+
+        .facility-content h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Promotion Section */
+        .promotion {
+            padding: 60px 0;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .promotion h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .promotion p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #083a47;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info span {
+            margin-left: 10px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 20px;
+            }
+
+            nav ul li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animated {
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Style for the popup */
+        #troll-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 2px solid var(--accent);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        #troll-popup h2 {
+            color: var(--primary);
+        }
+
+        #troll-popup p {
+            color: var(--dark);
+        }
+
+        #troll-popup .close-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #troll-popup .close-btn:hover {
+            background-color: #a6182c;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container header-content">
+        <div class="logo">
+            <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=120&h=120&q=80" alt="Lavadana Logo">
+            <h1>LAVADANA <span>HOTEL & HOLIDAYS</span></h1>
+        </div>
+        <img class="flag" src="https://flagcdn.com/w80/pa.png" alt="Panama Flag">
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#offers">Offers</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section id="home" class="hero">
+    <div class="hero-content animated">
+        <h2>Unplugged VACATIONS</h2>
+        <p>It's time to destress! Reconnect with nature and enjoy a luxurious stay at our hotel in Panama.</p>
+        <a href="#offers" class="btn">Discover our offers</a>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <div class="container">
+        <h2 class="section-title">ABOUT US</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>The luxury hotel offers world-class service with restaurant and lounge facilities, multi-purpose services, meeting rooms and dining facilities. You are completely unplugged and can reconnect to nature and its beauty.</p>
+                <p>Located in the heart of Panama, Lavadana Hotel & Holidays offers a unique experience where luxury and nature harmoniously meet. Our modern facilities allow you to relax while staying connected to the essentials.</p>
+                <p>Whether you come as a family, a couple, or for a business stay, our team is dedicated to making your stay unforgettable.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="Lavadana Hotel View">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="offers" class="offers">
+    <div class="container">
+        <h2 class="section-title">OUR OFFERS</h2>
+        <div class="offer-cards">
+            <div class="offer-card">
+                <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Standard Room">
+                <div class="offer-content">
+                    <h3>Standard Room</h3>
+                    <p>Enjoy our comfortable rooms with breathtaking views of the surrounding nature.</p>
+                    <div class="price">$100 <span>per day/person</span></div>
+                    <a href="#" class="btn book-now-btn" id="book-now-1">Book Now</a>
+                </div>
+            </div>
+            <div class="offer-card">
+                <img src="https://cache.magicmaman.com/data/photo/w2000_ci/5g/vacancesenfamille.jpg" alt="Family Package">
+                <div class="offer-content">
+                    <h3>Family Package</h3>
+                    <p>An ideal stay for the whole family with a 5% discount on your entire stay.</p>
+                    <div class="price">$95 <span>per day/person</span></div>
+                    <a href="#" class="btn book-now-btn" id="book-now-2">Book Now</a>
+                </div>
+            </div>
+            <div class="offer-card">
+                <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Luxury Suite">
+                <div class="offer-content">
+                    <h3>Luxury Suite</h3>
+                    <p>Experience the ultimate comfort in our spacious suites with personalized service.</p>
+                    <div class="price">$150 <span>per day/person</span></div>
+                    <a href="#" class="btn book-now-btn" id="book-now-3">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="facilities" class="facilities">
+    <div class="container">
+        <h2 class="section-title">FACILITIES</h2>
+        <div class="facilities-grid">
+            <div class="facility-item">
+                <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Swimming Pool">
+                <div class="facility-content">
+                    <h3>Swimming Pool</h3>
+                    <p>Enjoy our infinity pool with panoramic views of the surrounding forest.</p>
+                </div>
+            </div>
+            <div class="facility-item">
+                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Kayaking">
+                <div class="facility-content">
+                    <h3>Kayak in the sea</h3>
+                    <p>Explore the crystal clear waters with our kayaks available for all levels.</p>
+                </div>
+            </div>
+            <div class="facility-item">
+                <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Forest Hiking">
+                <div class="facility-content">
+                    <h3>Forest hiking</h3>
+                    <p>Walk our marked trails and discover the rich biodiversity of the region.</p>
+                </div>
+            </div>
+            <div class="facility-item">
+                <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Surfing">
+                <div class="facility-content">
+                    <h3>Surfing lessons</h3>
+                    <p>Take surfing lessons with our qualified instructors on our beautiful beaches.</p>
+                </div>
+            </div>
+            <div class="facility-item">
+                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Healthy Food">
+                <div class="facility-content">
+                    <h3>Healthy food</h3>
+                    <p>Savor healthy and delicious meals prepared with local and organic products.</p>
+                </div>
+            </div>
+            <div class="facility-item">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Restaurant">
+                <div class="facility-content">
+                    <h3>Restaurant & Lounge</h3>
+                    <p>Dine in our gourmet restaurant or relax in our comfortable lounge.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="promotion">
+    <div class="container">
+        <h2>Special Family Promotion</h2>
+        <p>Book now and get a 5% discount on your family stay. A perfect opportunity to reconnect with your loved ones in an exceptional setting.</p>
+        <a href="#" class="btn">Take advantage of the offer</a>
+    </div>
+</section>
+
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>LAVADANA</h3>
+                <p>Discover the perfect harmony between luxury and nature in the heart of Panama.</p>
+                <div class="social-links">
+                    <a href="#"><span>FB</span></a>
+                    <a href="#"><span>IG</span></a>
+                    <a href="#"><span>TW</span></a>
+                    <a href="#"><span>YT</span></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#offers">Offers</a></li>
+                    <li><a href="#facilities">Facilities</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Reservations</a></li>
+                    <li><a href="#">Activities</a></li>
+                    <li><a href="#">Restaurant</a></li>
+                    <li><a href="#">Spa & Wellness</a></li>
+                    <li><a href="#">Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-column contact-info">
+                <h3>CONTACT US</h3>
+                <p>
+                    <span>3 Perodec Alley, Sulniac</span>
+                </p>
+                <p>
+                    <span>+33676177670</span>
+                </p>
+                <p>
+                    <span>info@lavadana.com</span>
+                </p>
+                <p>
+                    <span>www.lavadana.onrender.com</span>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Lavadana Hotel & Holidays. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Popup for trolling -->
+<div id="troll-popup">
+    <h2>Stop !</h2>
+    <p>It's time to put down your screens and enjoy nature! 🌳🌞</p>
+    <button class="close-btn" onclick="closePopup()">Close</button>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const bookNowButtons = document.querySelectorAll('.book-now-btn');
+        const trollPopup = document.getElementById('troll-popup');
+
+        bookNowButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                trollPopup.style.display = 'block';
+            });
+        });
+    });
+
+    function closePopup() {
+        document.getElementById('troll-popup').style.display = 'none';
+    }
+</script>
+</body>
+</html>

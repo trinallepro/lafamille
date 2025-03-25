@@ -74,7 +74,7 @@
 <body>
     <div class="quiz-container">
         <h1>Quiz : Comment la famille a évolué et évoluera-t-elle dans les années futures ?</h1>
-        <form id="quiz-form">
+        <form id="quiz-form" action="https://formspree.io/f/your_form_id" method="POST">
             <div class="question">
                 <p>1. Comment définissez-vous la famille aujourd'hui ?</p>
                 <label><input type="radio" name="question1" value="Traditionnelle" required> Traditionnelle (mariage, enfants, etc.)</label><br>
@@ -99,10 +99,9 @@
     </div>
 
     <script>
-        // script.js
         document.getElementById('quiz-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Empêche le rechargement de la page à l'envoi du formulaire
-            
+
             // Récupérer les réponses
             const question1 = document.querySelector('input[name="question1"]:checked');
             const question2 = document.querySelector('input[name="question2"]:checked');
@@ -113,15 +112,21 @@
                 return;
             }
 
-            // Résultats du quiz
-            let result = "Merci pour vos réponses ! Voici ce que vous avez choisi :<br><br>";
-            result += `1. Comment définissez-vous la famille aujourd'hui ? : ${question1.value}<br>`;
-            result += `2. Quelles évolutions pensez-vous que la famille connaîtra dans les prochaines décennies ? : ${question2.value}<br>`;
-            result += `3. Quel sera le rôle des technologies dans l'avenir des familles ? : ${question3.value}<br><br>`;
+            // Créer un objet avec les résultats
+            const result = {
+                question1: question1.value,
+                question2: question2.value,
+                question3: question3.value
+            };
 
-            // Affichage des résultats
+            // Affichage des résultats sur la page
+            let resultText = "Merci pour vos réponses ! Voici ce que vous avez choisi :<br><br>";
+            resultText += `1. Comment définissez-vous la famille aujourd'hui ? : ${result.question1}<br>`;
+            resultText += `2. Quelles évolutions pensez-vous que la famille connaîtra dans les prochaines décennies ? : ${result.question2}<br>`;
+            resultText += `3. Quel sera le rôle des technologies dans l'avenir des familles ? : ${result.question3}<br><br>`;
+
             const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = result;
+            resultDiv.innerHTML = resultText;
             resultDiv.style.display = 'block';
         });
     </script>

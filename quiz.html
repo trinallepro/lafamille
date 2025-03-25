@@ -3,83 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enquête sur la Famille</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .survey-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: left;
-        }
-        h1 {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .question {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-top: 5px;
-        }
-        input[type="radio"], input[type="checkbox"] {
-            margin-right: 10px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #007BFF;
-            color: #fff;
-            margin-top: 20px;
-            width: 100%;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .results {
-            margin-top: 20px;
-        }
-    </style>
+    <title>Quiz sur l'évolution de la famille</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="survey-container">
-        <h1>Enquête sur la Famille</h1>
-        <form id="surveyForm">
+    <div class="quiz-container">
+        <h1>Quiz sur l'évolution de la famille</h1>
+        <form id="quiz-form">
             <div class="question">
-                <p>1. Combien de membres y a-t-il dans votre famille ?</p>
-                <label><input type="radio" name="famille_membres" value="1-2"> 1-2</label>
-                <label><input type="radio" name="famille_membres" value="3-5"> 3-5</label>
-                <label><input type="radio" name="famille_membres" value="6+"> 6+</label>
+                <p>1. Quelle est la principale cause de l'évolution des structures familiales au XXe siècle ?</p>
+                <label><input type="radio" name="q1" value="a"> A. L'augmentation de la longévité</label><br>
+                <label><input type="radio" name="q1" value="b"> B. La révolution industrielle</label><br>
+                <label><input type="radio" name="q1" value="c"> C. Les changements sociaux et culturels</label><br>
+                <label><input type="radio" name="q1" value="d"> D. L'urbanisation</label><br>
             </div>
             <div class="question">
-                <p>2. Quel est le statut familial du chef de famille ?</p>
-                <label><input type="radio" name="famille_statut" value="Marié(e)"> Marié(e)</label>
-                <label><input type="radio" name="famille_statut" value="Célibataire"> Célibataire</label>
-                <label><input type="radio" name="famille_statut" value="Divorcé(e)"> Divorcé(e)</label>
-                <label><input type="radio" name="famille_statut" value="Veuf(ve)"> Veuf(ve)</label>
+                <p>2. Quelles sont les principales tendances de l'évolution des familles dans les années futures ? (Sélectionnez toutes les réponses correctes)</p>
+                <label><input type="checkbox" name="q2" value="a"> A. Augmentation des familles monoparentales</label><br>
+                <label><input type="checkbox" name="q2" value="b"> B. Diminution de la taille des familles</label><br>
+                <label><input type="checkbox" name="q2" value="c"> C. Augmentation des familles recomposées</label><br>
+                <label><input type="checkbox" name="q2" value="d"> D. Augmentation des familles homoparentales</label><br>
             </div>
-            <div class="question">
-                <p>3. Combien d'enfants avez-vous ?</p>
-                <label><input type="radio" name="famille_enfants" value="Aucun"> Aucun</label>
-                <label><input type="radio" name="famille_enfants" value="1-2"> 1-2</label>
-                <label><input type="radio" name="famille_enfants" value="3+"> 3+</label>
-            </div>
-            <div class="question">
-                <p>4. Quels sont les âges de vos enfants ? (sélectionnez tous ceux qui s'appliquent)</p>
-                <label><input type="checkbox" name="famille_age_enfants" value="0-5"> 0-5 ans</label>
-                <label><input type="checkbox" name="famille_age_enfants" value="6-12"> 6-12 ans</label>
-                <label><input type="checkbox" name="famille_age_enfants" value="13-18"> 13-
+            <button type="button" onclick="validateQuiz()">Valider</button>
+        </form>
+        <div id="result" class="hidden"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

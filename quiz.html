@@ -74,35 +74,47 @@
 <body>
     <div class="quiz-container">
         <h1>Quiz : Comment la famille a évolué et évoluera-t-elle dans les années futures ?</h1>
-        <form id="quiz-form" action="https://formspree.io/f/your_form_id" method="POST">
+        <form action="https://formspree.io/f/xeoazaey" method="POST">
+            <!-- Question 1 -->
             <div class="question">
                 <p>1. Comment définissez-vous la famille aujourd'hui ?</p>
                 <label><input type="radio" name="question1" value="Traditionnelle" required> Traditionnelle (mariage, enfants, etc.)</label><br>
                 <label><input type="radio" name="question1" value="Moderne"> Moderne (diversité des structures familiales)</label><br>
                 <label><input type="radio" name="question1" value="Autre"> Autre</label>
             </div>
+            
+            <!-- Question 2 -->
             <div class="question">
                 <p>2. Quelles évolutions pensez-vous que la famille connaîtra dans les prochaines décennies ?</p>
                 <label><input type="radio" name="question2" value="Plus de diversité"> Plus de diversité dans les structures familiales</label><br>
                 <label><input type="radio" name="question2" value="Technologie et famille"> L'impact de la technologie sur les relations familiales</label><br>
                 <label><input type="radio" name="question2" value="Retour aux valeurs traditionnelles"> Retour aux valeurs traditionnelles</label>
             </div>
+            
+            <!-- Question 3 -->
             <div class="question">
                 <p>3. Selon vous, quel sera le rôle des technologies dans l'avenir des familles ?</p>
                 <label><input type="radio" name="question3" value="Essentiel"> Essentiel dans la communication et l'organisation</label><br>
                 <label><input type="radio" name="question3" value="Modéré"> Modéré, pour des tâches pratiques</label><br>
                 <label><input type="radio" name="question3" value="Peu d'impact"> Peu d'impact sur les relations familiales</label>
             </div>
-            <button type="submit" class="submit-btn">Soumettre</button>
+
+            <!-- Optionnel : Champs de contact -->
+            <label for="email">Votre email (pour recevoir des résultats ou autres informations) :</label>
+            <input type="email" name="email" id="email" required>
+
+            <button type="submit">Soumettre</button>
         </form>
+        
         <div id="result" class="result"></div>
     </div>
 
     <script>
-        document.getElementById('quiz-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Empêche le rechargement de la page à l'envoi du formulaire
+        // Fonction pour afficher un message de remerciement et prévenir l'utilisateur
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Empêcher la soumission par défaut du formulaire
 
-            // Récupérer les réponses
+            // Collecter les réponses du quiz
             const question1 = document.querySelector('input[name="question1"]:checked');
             const question2 = document.querySelector('input[name="question2"]:checked');
             const question3 = document.querySelector('input[name="question3"]:checked');
@@ -112,19 +124,22 @@
                 return;
             }
 
-            // Créer un objet avec les résultats
+            // Créer un objet pour stocker les résultats
             const result = {
                 question1: question1.value,
                 question2: question2.value,
-                question3: question3.value
+                question3: question3.value,
+                email: document.querySelector('input[name="email"]').value
             };
 
-            // Affichage des résultats sur la page
+            // Créer un résumé des résultats
             let resultText = "Merci pour vos réponses ! Voici ce que vous avez choisi :<br><br>";
             resultText += `1. Comment définissez-vous la famille aujourd'hui ? : ${result.question1}<br>`;
             resultText += `2. Quelles évolutions pensez-vous que la famille connaîtra dans les prochaines décennies ? : ${result.question2}<br>`;
             resultText += `3. Quel sera le rôle des technologies dans l'avenir des familles ? : ${result.question3}<br><br>`;
+            resultText += `Votre email : ${result.email}<br><br>`;
 
+            // Afficher les résultats sur la page
             const resultDiv = document.getElementById('result');
             resultDiv.innerHTML = resultText;
             resultDiv.style.display = 'block';

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquête sur la Famille</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .survey-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: left;
+        }
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 5px;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            margin-top: 20px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="survey-container">
+        <h1>Enquête sur la Famille</h1>
+        <form id="surveyForm">
+            <div class="question">
+                <p>1. Combien de membres y a-t-il dans votre famille ?</p>
+                <label><input type="radio" name="famille_membres" value="1-2"> 1-2</label>
+                <label><input type="radio" name="famille_membres" value="3-5"> 3-5</label>
+                <label><input type="radio" name="famille_membres" value="6+"> 6+</label>
+            </div>
+            <div class="question">
+                <p>2. Quel est le statut familial du chef de famille ?</p>
+                <label><input type="radio" name="famille_statut" value="Marié(e)"> Marié(e)</label>
+                <label><input type="radio" name="famille_statut" value="Célibataire"> Célibataire</label>
+                <label><input type="radio" name="famille_statut" value="Divorcé(e)"> Divorcé(e)</label>
+                <label><input type="radio" name="famille_statut" value="Veuf(ve)"> Veuf(ve)</label>
+            </div>
+            <div class="question">
+                <p>3. Combien d'enfants avez-vous ?</p>
+                <label><input type="radio" name="famille_enfants" value="Aucun"> Aucun</label>
+                <label><input type="radio" name="famille_enfants" value="1-2"> 1-2</label>
+                <label><input type="radio" name="famille_enfants" value="3+"> 3+</label>
+            </div>
+            <div class="question">
+                <p>4. Quels sont les âges de vos enfants ? (sélectionnez tous ceux qui s'appliquent)</p>
+                <label><input type="checkbox" name="famille_age_enfants" value="0-5"> 0-5 ans</label>
+                <label><input type="checkbox" name="famille_age_enfants" value="6-12"> 6-12 ans</label>
+                <label><input type="checkbox" name="famille_age_enfants" value="13-18"> 13-

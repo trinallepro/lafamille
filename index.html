@@ -113,11 +113,16 @@ Ce dernier est permis grâce à l’évolution des consciences. On observe une a
     </p>
     <button class="close-btn" onclick="closePopup()">Close</button>
 </div>
-</div>
-    <script>
+
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         const bookNowButtons = document.querySelectorAll('.book-now-btn');
-        const trollPopup 
+        const trollPopup = document.getElementById('troll-popup');
+
+        bookNowButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                trollPopup.style.display = 'block';
             });
         });
     });
@@ -127,7 +132,7 @@ Ce dernier est permis grâce à l’évolution des consciences. On observe une a
     }
 </script>
     
-</div>
+
 
 
 
